@@ -1,0 +1,38 @@
+{
+  "name": "grpc-token-issuer",
+  "version": "1.0.0",
+  "description": "Token issuer microservice",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "exit 0",
+    "build:ts": "tsc",
+    "start": "node dist/index.js",
+    "clean": "rm -rf ./generated/* && rm -rf dist",
+    "build:clean": "npm run clean && npm run build",
+    "build": "npm run build:proto && npm run build:ts",
+    "build:proto": "mkdir -p generated && grpc_tools_node_protoc --js_out=import_style=commonjs,binary:generated --grpc_out=generated --plugin=protoc-gen-grpc=node_modules/.bin/grpc_tools_node_protoc_plugin --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=grpc=true:generated tokenissuer.proto",
+    "postinstall": "echo \"Instaling .proto files\" && while read -r line; do curl -sO https://raw.githubusercontent.com/nindooAI/protofiles/master/$line.proto; done < requirements.pb"
+  },
+  "contributors": [
+    "Rogério Munhoz <rogerio.j.munhoz@gmail.com>"
+  ],
+  "license": "UNLICENSED",
+  "dependencies": {
+    "grpc": "^1.22.2",
+    "jsonwebtoken": "^8.5.1",
+    "reflect-metadata": "^0.1.13",
+    "rsa-key": "0.0.6",
+    "sugar-env": "^1.5.7",
+    "google-protobuf": "^3.9.0-rc.1",
+    "tsyringe": "^3.3.0"
+  },
+  "devDependencies": {
+    "grpc_tools_node_protoc_ts": "^2.5.4",
+    "typescript": "^3.5.3",
+    "@grpc/proto-loader": "^0.5.1",
+    "@types/google-protobuf": "^3.7.1",
+    "@types/jsonwebtoken": "^8.3.2",
+    "protobufjs": "^6.8.8",
+    "grpc-tools": "^1.8.0"
+  }
+}
