@@ -18,7 +18,7 @@
   ],
   "license": "UNLICENSED",
   "dependencies": {
-    "grpc": "^1.22.2",
+    "grpc": "^1.24.9",
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "rsa-key": "0.0.6",
