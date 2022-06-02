@@ -32,7 +32,7 @@
     "@grpc/proto-loader": "^0.5.1",
     "@types/google-protobuf": "^3.7.1",
     "@types/jsonwebtoken": "^8.3.2",
-    "protobufjs": "^6.8.8",
+    "protobufjs": "^6.11.3",
     "grpc-tools": "^1.8.0"
   }
 }
